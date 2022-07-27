@@ -31,11 +31,14 @@ for article_tag in articles:
 # for upvote in article_upvotes:
 #     upvote =
 #     upvotes.append(upvote)
-upvotes = [score.getText() for score in soup.find_all(name="span", class_="score")]
+upvotes = [int(score.getText().split()[0]) for score in soup.find_all(name="span", class_="score")]
 
+max_score = max(upvotes)
+max_index = upvotes.index(max_score)
 # for article_tag in  article_tages:
 #     print(article_tag.text)
 
 print(article_texts)
 print(article_links)
 print(upvotes)
+print('Самая популярная статья:' ,article_texts[max_index], article_links[max_index] , max_score, 'очков, индекс:', max_index)
